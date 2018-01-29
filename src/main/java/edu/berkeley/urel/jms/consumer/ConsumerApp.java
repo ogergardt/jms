@@ -3,6 +3,7 @@ package edu.berkeley.urel.jms.consumer;
 import javax.jms.ConnectionFactory;
 
 import org.apache.activemq.ActiveMQConnectionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.domain.EntityScan;
@@ -19,6 +20,9 @@ import edu.berkeley.urel.jms.common.MessageConverters;
 @SpringBootApplication(scanBasePackages = {"edu.berkeley.urel.jms.consumer"})
 @EnableJms
 public class ConsumerApp {
+	
+    @Autowired
+    private MessageErrorHandler messageErrorHandler;
 
 	ConnectionFactory connectionFactory() {
 		ConnectionFactory connectionFactory = new ActiveMQConnectionFactory("tcp://192.168.99.101:61616");
@@ -28,7 +32,7 @@ public class ConsumerApp {
 	@Bean
 	public DefaultJmsListenerContainerFactory jmsListenerContainerFactory() {
 		DefaultJmsListenerContainerFactory factory = new DefaultJmsListenerContainerFactory();
-		factory.setErrorHandler(t -> System.err.println("An error has occurred in the transaction"));
+		factory.setErrorHandler(messageErrorHandler);
 		factory.setConnectionFactory(connectionFactory());
 		factory.setDestinationResolver(new DynamicDestinationResolver());
 		factory.setMessageConverter(MessageConverters.defaultMessageConverter());
