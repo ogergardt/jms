@@ -5,7 +5,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.LinkedHashMap;
 import java.util.Map;
-import java.util.logging.Logger;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -28,7 +27,7 @@ import edu.berkeley.urel.jms.producer.ProducerApp;
 import lombok.extern.log4j.Log4j;
 @Log4j
 public class Apple {
-	//private static final Logger LOGGER = Logger.getLogger("edu.berkeley.urel.scraper");
+
 	// Gerh
 	// private static final String URL =
 	// "https://jobs.apple.com/us/search?#location&t=0&so=&pN=0"; //URL - URL of the
@@ -96,7 +95,7 @@ public class Apple {
 			} else {
 				pageNo = (pageNo / 10) + 1;
 			}
-			for (int i = 0; (i < pageNo) && (i < 2); i++) {
+			for (int i = 0; i < pageNo; i++) {
 				System.out.println("pageNo: " + pageNo + " i: " + i);
 				if (i > 0) {
 					// Gerh

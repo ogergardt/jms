@@ -41,6 +41,8 @@ public class DriverFactory {
 		//System.setProperty("webdriver.chrome.logfile", "/usr/local/selenium-grid/mac-node/chromedriver.log");
 		System.setProperty("webdriver.chrome.driver", ResourceBundle.getBundle("config").getString("webdriver.chrome.driver"));
 		System.setProperty("webdriver.chrome.logfile", ResourceBundle.getBundle("config").getString("webdriver.chrome.logfile"));
+	    System.setProperty("webdriver.chrome.args", "--disable-logging");
+	    System.setProperty("webdriver.chrome.silentOutput", "true");
 		return new ChromeDriver(options);
 	}
 

@@ -1,10 +1,10 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
-  <groupId>edu.berkeley.urel</groupId>
-  <artifactId>jms</artifactId>
-  <version>0.0.1</version>
-  <packaging>jar</packaging>
+    <groupId>edu.berkeley.urel</groupId>
+    <artifactId>jms</artifactId>
+    <version>0.0.1</version>
+    <packaging>jar</packaging>
 
 	<parent>
 		<groupId>org.springframework.boot</groupId>
@@ -13,6 +13,7 @@
 	</parent>
 
 	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<java.version>1.8</java.version>
 		<version.selenium>2.53.1</version.selenium>
 		<start-class>edu.berkeley.urel.jms.boot.AppStarter</start-class>
@@ -105,12 +106,35 @@
 	</dependencies>
 
 	<build>
+	    <resources>
+           <resource>
+              <directory>src/main/resources</directory>
+              <filtering>true</filtering>
+           </resource>
+        </resources>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<jvmArguments>--add-modules java.xml.bind</jvmArguments>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
-
+	<!-- info -->
+	<developers>
+		<developer>
+			<id>ogergardt</id>
+			<name>Oleksandr Gergardt</name>
+			<email>ogergardt@hotmail.com</email>
+			<url>http://github.com/ogergardt</url>
+			<roles>
+				<role>ReleaseManager</role>
+				<role>Designer</role>
+				<role>Developer</role>
+			</roles>
+			<timezone>UTC-8</timezone>
+		</developer>
+	</developers>
 </project>
