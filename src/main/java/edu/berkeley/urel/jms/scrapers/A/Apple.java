@@ -11,7 +11,11 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.remote.RemoteWebDriver;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import java.net.URL;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.springframework.boot.SpringApplication;
@@ -19,7 +23,6 @@ import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.jms.core.JmsTemplate;
 
 import edu.berkeley.urel.jms.common.CheckForInternetConnection;
-import edu.berkeley.urel.jms.common.DriverFactory;
 import edu.berkeley.urel.jms.common.HtmlCleaner;
 import edu.berkeley.urel.jms.common.ScraperUtil;
 import edu.berkeley.urel.jms.model.Job;
@@ -51,13 +54,13 @@ public class Apple {
 		 * try { ds = DataSource.getInstance(); con = ds.getConnection(); } catch
 		 * (Exception e2) { e2.printStackTrace(); }
 		 */
+		Capabilities chromeCapabilities = DesiredCapabilities.chrome();
+		WebDriver driver = new RemoteWebDriver(new URL("http://hub:4444/wd/hub"), chromeCapabilities);
 
 		try {
 			int jobCount = 0;
 			int matched_URLS_Count = 0;
 			String checkdup = "N";
-			// Gerh
-			// SetExpiry.setExpiredJobsStatus_Y_TO_N(con, checkdup, COMPANY);
 			String noofpos = "1";
 			Integer sno = 0; // Serial Number
 			Integer arrIdx = 0; // Array Index
@@ -71,7 +74,6 @@ public class Apple {
 
 			log.info("Started scrapping");
 			noofpos = "1";
-			WebDriver driver = DriverFactory.getInstance().getDriver();
 			WebDriverWait wait = new WebDriverWait(driver, 30);
 			try {
 				driver.get(URL);
@@ -225,8 +227,9 @@ public class Apple {
 					}
 				}
 			}
-			driver.close();
+			//driver.close();
 		} finally {
+			driver.quit();
 
 		}
 	}
@@ -235,7 +238,7 @@ public class Apple {
 		ConfigurableApplicationContext context = SpringApplication.run(ProducerApp.class, args);
 		JmsTemplate jmsTemplate = context.getBean(JmsTemplate.class);
 		String browser = "CRM";
-		DriverFactory.start(browser);
+		//DriverFactory.start(browser);
 		Apple obj = new Apple();
 		    obj.scrapAndIndex(jmsTemplate);
 	}

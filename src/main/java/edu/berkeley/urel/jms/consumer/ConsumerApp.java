@@ -25,7 +25,7 @@ public class ConsumerApp {
     private MessageErrorHandler messageErrorHandler;
 
 	ConnectionFactory connectionFactory() {
-		ConnectionFactory connectionFactory = new ActiveMQConnectionFactory("tcp://192.168.99.101:61616");
+		ConnectionFactory connectionFactory = new ActiveMQConnectionFactory("tcp://activemq:61616");
 		return connectionFactory;
 	}
 

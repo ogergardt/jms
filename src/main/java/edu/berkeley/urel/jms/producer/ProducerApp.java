@@ -14,14 +14,13 @@ import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.jms.core.JmsTemplate;
 
-import edu.berkeley.urel.jms.common.DriverFactory;
 import edu.berkeley.urel.jms.common.MessageConverters;
 
 @SpringBootApplication(exclude={DataSourceAutoConfiguration.class, HibernateJpaAutoConfiguration.class})
 public class ProducerApp implements CommandLineRunner {
 
 	ConnectionFactory connectionFactory() {
-		ConnectionFactory connectionFactory = new ActiveMQConnectionFactory("tcp://192.168.99.101:61616");
+		ConnectionFactory connectionFactory = new ActiveMQConnectionFactory("tcp://activemq:61616");
 		return connectionFactory;
 	}
 
@@ -35,8 +34,10 @@ public class ProducerApp implements CommandLineRunner {
 	public static void main(String[] args) throws Exception {
 		ConfigurableApplicationContext context = SpringApplication.run(ProducerApp.class, args);
 		JmsTemplate jmsTemplate = context.getBean(JmsTemplate.class);
-		String browser = "CRM";
-		DriverFactory.start(browser);
+		//String browser = "CRM";
+		//Capabilities chromeCapabilities = DesiredCapabilities.chrome();
+		//WebDriver driver = new RemoteWebDriver(new URL("http://192.168.99.103:4444/wd/hub"), chromeCapabilities);
+		//DriverFactory.start(browser);
 
 		String arr = "A";
 		for (String fname : new String[] {"Apple"}) {
