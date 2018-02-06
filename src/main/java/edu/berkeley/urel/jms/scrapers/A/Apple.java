@@ -40,7 +40,7 @@ public class Apple {
 	private static final String URL = "https://jobs.apple.com/us/search?#location&t=0&so=&lo=1*953*USA&pN=0";
 	private static final String IMAGEURL = ""; // IMAGEURL - URL of the company LOGO
 	private static final String JOBTYPE = "Scrapped"; // By default JOBTYPE is set as Scrapped
-	private static final String COMPANY = "Apple Inc"; // COMPANY - To store the company name
+	private static final String COMPANY = "Apple"; // COMPANY - To store the company name
 
 	/*
 	 * scrapAndIndex() - To scrap the job details from the website and storing the
