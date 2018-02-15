@@ -82,7 +82,7 @@ public class Job implements Serializable{
     @Column
 	private String check_dup;//No of position 
     @Column
-	private String eDate;//Expired date
+	private String e_date;//Expired date
 	@JsonProperty
     @Column
 	private String emailId;//Email ID

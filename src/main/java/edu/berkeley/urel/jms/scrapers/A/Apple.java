@@ -81,7 +81,7 @@ public class Apple {
 			} catch (Exception e) {
 				while (!CheckForInternetConnection.isInternetConnected()) {
 					log.error(
-							"Internet is disconnected while scrapping Apple_Inc..... trying to reconnect...Please Check Cable..");
+							"Internet is disconnected while scrapping Apple");
 					Thread.sleep(3000);
 				}
 				driver.get(URL);
@@ -146,7 +146,7 @@ public class Apple {
 						} catch (Exception e) {
 							while (!CheckForInternetConnection.isInternetConnected()) {
 								log.error(
-										"Internet is disconnected while scrapping Apple_Inc..... trying to reconnect...Please Check Cable..");
+										"Internet is disconnected while scrapping Apple.");
 								Thread.sleep(3000);
 							}
 							driver.get(forwardUrl);
@@ -200,7 +200,7 @@ public class Apple {
 						job.setForward_url(forwardUrl);
 						job.setJob_title(HtmlCleaner.cleanHtml(jobTitle.trim()));
 						job.setPosted_date(HtmlCleaner.cleanHtml(pDate.trim()));
-						job.setEDate(HtmlCleaner.cleanHtml(eDate.trim()));
+						job.setE_date(HtmlCleaner.cleanHtml(eDate.trim()));
 						job.setLocation(HtmlCleaner.cleanHtml(location.trim()));
 						job.setSkills(HtmlCleaner.cleanHtml(skills.trim()));
 						job.setExperience(HtmlCleaner.cleanHtml(experience.trim()));
