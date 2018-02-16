@@ -49,12 +49,7 @@ public class Apple {
 
 	public void scrapAndIndex(JmsTemplate jmsTemplate) throws IOException, InterruptedException, ParseException {
 
-		// Gerh
-		/*
-		 * try { ds = DataSource.getInstance(); con = ds.getConnection(); } catch
-		 * (Exception e2) { e2.printStackTrace(); }
-		 */
-/*		Capabilities chromeCapabilities = DesiredCapabilities.chrome();
+		Capabilities chromeCapabilities = DesiredCapabilities.chrome();
 		WebDriver driver = new RemoteWebDriver(new URL("http://hub:4444/wd/hub"), chromeCapabilities);
 
 		try {
@@ -135,10 +130,10 @@ public class Apple {
 
 						// Gerh
 						++matched_URLS_Count;
-						
+						/*
 						 * if(URLUploader.isURLAlreadyScrap_CheckWithTitle_N(con,forwardUrl, jobTitle,
 						 * checkdup)){ ++matched_URLS_Count; continue; }
-						 
+						 */
 
 						try {
 							driver.get(forwardUrl);
@@ -172,9 +167,9 @@ public class Apple {
 								+ JOBTYPE + "\nNo of Positions::" + noofpos + "\nJob Id::" + jobid + "\nforwardurl::"
 								+ forwardUrl);
 
-						*//**
+						/**
 						 * Rows of XLSX file is updated here
-						 *//*
+						 */
 
 						if (location.isEmpty()) {
 							ScraperUtil scobj = new ScraperUtil();
@@ -231,7 +226,7 @@ public class Apple {
 		} finally {
 			driver.quit();
 
-		}*/
+		}
 	}
 	
 	public static void main(String[] args) throws IOException, InterruptedException, ParseException {

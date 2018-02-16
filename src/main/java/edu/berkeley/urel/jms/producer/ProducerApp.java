@@ -40,7 +40,7 @@ public class ProducerApp implements CommandLineRunner {
 		//DriverFactory.start(browser);
 
 		String arr = "A";
-		for (String fname : new String[] {"Apple"}) {
+		for (String fname : new String[] {"Apple", "Qualcomm"}) {
 		String classFullName = "edu.berkeley.urel.jms.scrapers." + arr + "." + fname.replace(".class", "");
 		try {
 			Class<?> cl = Class.forName(classFullName);
